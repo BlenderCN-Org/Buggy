@@ -1,0 +1,667 @@
+#:kivy 1.9.0
+
+<WheelScreen>:
+    grid: grid
+    id: gestion
+    BoxLayout:  # boite globale
+        canvas:
+            Color:
+                rgba: 0, 0, 1.0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        orientation: "vertical"
+        Label:  # titre
+            size_hint_y: 0.10
+            text: "{}".format(root.debug_text)  #"Buggy Wheel"
+            bold: True
+            font_size: "24dp"
+            color: 0, 1, 0, 1
+        BoxLayout: # grande boite
+            # 3 boites horizontales
+            size_hint_y: 0.90
+
+            # Freins
+            BoxLayout:
+                spacing: 10
+                padding: 10
+                size_hint_x: 0.20
+                orientation: "vertical"
+                Button: # gros pavé de freins
+                    size_hint_y: 0.5
+                    background_color: 1, 0.0, 0.0, 1
+                    #background_color_down: 1, 1, 1, 1
+                    on_press: root.enable_brake()
+                    on_release: root.do_brake_release()
+                Label:
+                    size_hint_y: 0.1
+                    text: "Freins"
+                    color: 0, 0, 0, 1
+                    bold: True
+                    font_size: "18dp"
+                BoxLayout: # boite vide
+                    size_hint_y: 0.25
+
+            # Boutons au centre
+            BoxLayout:  # Boite au centre
+                orientation: "vertical"
+                size_hint_x: 0.70
+                BoxLayout:  # boite vide en haut
+                    size_hint_y: 0.12
+                BoxLayout: # LED
+                    size_hint_y: 0.04
+                    BoxLayout:
+                        size_hint_x: 0.1
+                    GridLayout: # Grille des leds
+                        size_hint_x: 0.8
+                        cols: 12
+                        rows: 1
+                        id: grid
+                    BoxLayout:
+                        size_hint_x: 0.1
+                BoxLayout: # boutons
+                    size_hint_y: 0.84
+                    BoxLayout:  # boite vide à gauche
+                        size_hint_x: 0.1
+                    BoxLayout:  # 9 boites verticales
+                        orientation: "vertical"
+                        size_hint_x: 0.8
+                        BoxLayout:  # vide
+                            size_hint_y: 0.05
+                        BoxLayout:
+                            orientation: "vertical"
+                            size_hint_y: 0.35
+                            # Réglage
+                            Label: # Réglage
+                                size_hint_y: 0.2
+                                text: "Réglage de la voiture:"
+                                bold: True
+                                font_size: "18dp"
+                                color: 0, 0, 0, 1
+                            BoxLayout:  # réglage
+                                size_hint_y: 0.8
+                                spacing: 10
+                                padding: 10
+                                ToggleButton: # Preset 1
+                                    size_hint_x: 0.30
+                                    group: "preset"
+                                    state: "down"
+                                    background_color: 0, 0.5, 0.5, 1
+                                    text: 'Preset 1'
+                                    bold: True
+                                    color: (0, 1, 0, 1)
+                                    font_size: "18dp"
+                                    on_press: root.set_preset("0")
+                                BoxLayout:
+                                    size_hint_x: 0.40
+                                    orientation: "vertical"
+                                    BoxLayout:
+                                        size_hint_y: 0.15
+                                    Button:    # Réglage
+                                        size_hint_y: 0.60
+                                        background_color: 0, 0, 0.9, 0.6
+                                        text: 'Réglage'
+                                        bold: True
+                                        color: 0, 1, 0, 1
+                                        font_size: "22dp"
+                                        on_press: root.manager.current = ("Preset")
+                                    BoxLayout:
+                                        size_hint_y: 0.15
+                                ToggleButton: # Preset 2
+                                    size_hint_x: 0.30
+                                    group: "preset"
+                                    state: "normal"
+                                    background_color: 0, 0.5, 0.5, 1
+                                    text: 'Preset 2'
+                                    bold: True
+                                    color: (0, 1, 0, 1)
+                                    font_size: "18dp"
+                                    on_press: root.set_preset("1")
+                        BoxLayout:  # vide
+                            size_hint_y: 0.05
+                        # Menu
+                        Label:   # Menu
+                            size_hint_y: 0.05
+                            text: "Menu"
+                            bold: True
+                            font_size: "18dp"
+                            color: 0, 0, 0, 1
+                        GridLayout:  # 6 boites
+                            size_hint_y: 0.45
+                            cols: 2
+                            rows: 3
+                            spacing: 5
+                            padding: 5
+                            Button: # Who Are You
+                                background_color: 0, 0, 0.9, 0.6
+                                text: 'Who are you ?'
+                                bold: True
+                                color: (0, 1, 0, 1)
+                                font_size: "20dp"
+                                on_release: root.go_to_who()
+                            Button: # Etal
+                                background_color: 0, 0, 0.9, 0.6
+                                text: 'Etalonnage'
+                                bold: True
+                                color: 0, 1, 0, 1
+                                font_size: "20dp"
+                                on_press: root.manager.current = ("Etalonnage")
+                            Button: # Options
+                                background_color: 0, 0, 0.9, 0.6
+                                text: 'Options'
+                                bold: True
+                                color: (0, 1, 0, 1)
+                                font_size: "20dp"
+                                on_press: app.open_settings()
+                            Button: # Gestion
+                                id: gestion
+                                disabled: False
+                                background_color: 0, 0, 0.9, 0.6
+                                text: 'Gestion du jeu'
+                                bold: True
+                                color: 0, 1, 0, 1
+                                font_size: "20dp"
+                                on_press: root.manager.current = ("Game")
+                            Button: # Aide
+                                background_color: 0, 0, 0.9, 0.6
+                                text: 'Aide'
+                                bold: True
+                                color: 0, 1, 0, 1
+                                font_size: "20dp"
+                                on_press: root.do_aide()
+                            Button: # Quitter
+                                background_color: 0, 0, 0.9, 0.6
+                                text: 'Quitter'
+                                bold: True
+                                color: 0, 1, 0, 1
+                                font_size: "20dp"
+                                on_press: root.do_quit()
+                        BoxLayout:  # boite vide
+                            size_hint_y: 0.05
+                    BoxLayout:  # boite vide à droite
+                        size_hint_x: 0.1
+
+            # Accélérateur
+            BoxLayout:
+                spacing: 10
+                padding: 10
+                size_hint_x: 0.20
+                orientation: "vertical"
+                Button: # gros pavé d'accélérateur
+                    size_hint_y: 0.5
+                    background_color: 0, 1, 0, 1
+                    on_press: root.enable_accelerator()
+                    on_release: root.do_acc_release()
+                Label:
+                    size_hint_y: 0.1
+                    text: "Accélérateur"
+                    color: 0, 0, 0, 1
+                    bold: True
+                    font_size: "16dp"
+                BoxLayout: # boite vide
+                    size_hint_y: 0.25
+
+<WhoAreYouScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 5
+        padding: 5
+        canvas:
+            Color:
+                rgba: 0, 0, 1.0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            size_hint_y: 0.2
+            text: "Who are you ?"
+            bold: True
+            font_size: "36dp"
+        GridLayout:
+            size_hint_y: 0.6
+            cols: 2
+            rows: 2
+            spacing: 50
+            padding: 50
+            ToggleButton:
+                group: "name"
+                id: "tb1"
+                text: "{}".format(root.name0)
+                bold: True
+                font_size: "22dp"
+                background_color: 0, 0, 0.9, 0.6
+                color: 0, 1, 0, 1
+                on_state: root.set_active(0, *args)
+            ToggleButton:
+                group: "name"
+                text: "{}".format(root.name1)
+                bold: True
+                font_size: "22dp"
+                background_color: 0, 0, 0.9, 0.6
+                color: 0, 1, 0, 1
+                on_state: root.set_active(1, *args)
+            ToggleButton:
+                group: "name"
+                text: "{}".format(root.name2)
+                bold: True
+                font_size: "22dp"
+                background_color: 0, 0, 0.9, 0.6
+                color: 0, 1, 0, 1
+                on_state: root.set_active(2, *args)
+            ToggleButton:
+                group: "name"
+                text: "{}".format(root.name3)
+                bold: True
+                font_size: "22dp"
+                background_color: 0, 0, 0.9, 0.6
+                color: 0, 1, 0, 1
+                on_state: root.set_active(3, *args)
+        GridLayout:
+            size_hint_y: 0.2
+            cols: 4
+            rows: 1
+            spacing: 20
+            padding: 20
+            BoxLayout:
+                size_hint_x: 0.7
+            Button:
+                size_hint_x: 0.3
+                text: "Valider"
+                bold: True
+                font_size: "24dp"
+                background_color: 0, 0, 0.9, 0.6
+                color: 0, 1, 0, 1
+                on_press: root.players_list_to_name_list()
+                on_release: root.manager.current = ("Wheel")
+
+<GameScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        canvas:
+            Color:
+                rgba: 0, 0, 1.0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            size_hint_y: 0.20
+            text: "Gestion du jeu Buggy"
+            bold: True
+            font_size: "24dp"
+            color: 0, 0, 0, 1
+        BoxLayout:
+            size_hint_y: 0.4
+            BoxLayout:
+                BoxLayout:
+                    size_hint_x: 0.10
+                Label:
+                    size_hint_x: 0.35
+                    text: "Circuit"
+                    bold: True
+                    font_size: "48dp"
+                    color: 0, 1, 0, 1
+                Label:
+                    size_hint_x: 0.10
+                    text: "{}".format(str(root.level))
+                    bold: True
+                    font_size: "64dp"
+                    color: 1, 0, 0, 1
+                BoxLayout:
+                    size_hint_x: 0.40
+                    spacing: 60
+                    padding: 60
+                    BoxLayout:
+                        BoxLayout:
+                            size_hint_x: 0.1
+                        Button:
+                            size_hint_x: 0.3
+                            text: "-"
+                            bold: True
+                            font_size: "64dp"
+                            background_color: 0, 0, 0.9, 0.6
+                            color: 0, 1, 0, 1
+                            on_press: root.do_level_moins()
+                        BoxLayout:
+                            size_hint_x: 0.2
+                        Button:
+                            size_hint_x: 0.3
+                            text: "+"
+                            bold: True
+                            font_size: "48dp"
+                            background_color: 0, 0, 0.9, 0.6
+                            color: 0, 1, 0, 1
+                            on_press: root.do_level_plus()
+                        BoxLayout:
+                            size_hint_x: 0.1
+                BoxLayout:
+                    size_hint_x: 0.05
+        BoxLayout:
+            size_hint_y: 0.4
+            orientation: "vertical"
+            spacing: 40
+            padding: 40
+            BoxLayout:
+                BoxLayout:
+                    size_hint_x: 0.35
+                ToggleButton:
+                    id: s_but
+                    size_hint_x: 0.3
+                    text: "Départ"
+                    bold: True
+                    font_size: "24dp"
+                    background_color: 0, 0, 0.9, 0.6
+                    color: 0, 1, 0, 1
+                    on_release: root.do_start(s_but.state)
+                BoxLayout:
+                    size_hint_x: 0.35
+            BoxLayout:
+                BoxLayout:
+                    size_hint_x: 0.35
+                ToggleButton:
+                    id: r_but
+                    size_hint_x: 0.3
+                    text: "Reset"
+                    bold: True
+                    font_size: "24dp"
+                    background_color: 0, 0, 0.9, 0.6
+                    color: 0, 1, 0, 1
+                    on_release: root.do_reset(r_but.state)
+                BoxLayout:
+                    size_hint_x: 0.35
+                    BoxLayout:
+                        size_hint_x: 0.5
+                    Button:
+                        size_hint_x: 0.5
+                        text: "Retour"
+                        bold: True
+                        font_size: "24dp"
+                        on_press: root.manager.current = ("Wheel")
+                        background_color: 0, 0, 0.9, 0.6
+                        color: 0, 1, 0, 1
+
+<PresetScreen>:
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: 0, 0, 1.0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        orientation: "vertical"
+
+        GridLayout:
+            size_hint_y: 0.90
+            cols: 2
+            rows: 1
+            padding: 20
+            spacing: 20
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    size_hint_y: 0.05
+                    text: "Préréglage 1"
+                    bold: True
+                    font_size: "14dp"
+                    color: 0, 1, 0, 1
+                GridLayout:
+                    cols: 1
+                    rows: 5
+                    BoxLayout:
+                        Label:
+                            size_hint_x: 0.35
+                            text: "Puissance"
+                            bold: True
+                            font_size: "14dp"
+                            color: 0, 1, 0, 1
+                        Slider:
+                            range: 0, 100
+                            value: 50
+                            on_value: root.on_slider(0, "puissance", *args)
+                    BoxLayout:
+                        Label:
+                            size_hint_x: 0.35
+                            text: "Adhérence"
+                            bold: True
+                            font_size: "14dp"
+                            color: 0, 1, 0, 1
+                        Slider:
+                            range: 0, 100
+                            value: 50
+                            on_value: root.on_slider(0, "adherence", *args)
+                    BoxLayout:
+                        Label:
+                            size_hint_x: 0.35
+                            text: "Raideur"
+                            bold: True
+                            font_size: "14dp"
+                            color: 0, 1, 0, 1
+                        Slider:
+                            range: 0, 100
+                            value: 50
+                            on_value: root.on_slider(0, "raideur", *args)
+                    BoxLayout:
+                        Label:
+                            size_hint_x: 0.35
+                            text: "Amortissement"
+                            bold: True
+                            font_size: "14dp"
+                            color: 0, 1, 0, 1
+                        Slider:
+                            range: 0, 100
+                            value: 50
+                            on_value: root.on_slider(0, "amortissement", *args)
+                    BoxLayout:
+                        Label:
+                            size_hint_x: 0.35
+                            text: "Roulis"
+                            bold: True
+                            font_size: "14dp"
+                            color: 0, 1, 0, 1
+                        Slider:
+                            range: 0, 100
+                            value: 50
+                            on_value: root.on_slider(0, "roulis", *args)
+
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    size_hint_y: 0.05
+                    text: "Préréglage 2"
+                    bold: True
+                    font_size: "14dp"
+                    color: 0, 1, 0, 1
+                GridLayout:
+                    cols: 1
+                    rows: 5
+                    BoxLayout:
+                        Label:
+                            size_hint_x: 0.35
+                            text: "Puissance"
+                            bold: True
+                            font_size: "14dp"
+                            color: 0, 1, 0, 1
+                        Slider:
+                            range: 0, 100
+                            value: 50
+                            on_value: root.on_slider(1, "puissance", *args)
+                    BoxLayout:
+                        Label:
+                            size_hint_x: 0.35
+                            text: "Adhérence"
+                            bold: True
+                            font_size: "14dp"
+                            color: 0, 1, 0, 1
+                        Slider:
+                            range: 0, 100
+                            value: 50
+                            on_value: root.on_slider(1, "adherence", *args)
+                    BoxLayout:
+                        Label:
+                            size_hint_x: 0.35
+                            text: "Raideur"
+                            bold: True
+                            font_size: "14dp"
+                            color: 0, 1, 0, 1
+                        Slider:
+                            range: 0, 100
+                            value: 50
+                            on_value: root.on_slider(1, "raideur", *args)
+                    BoxLayout:
+                        Label:
+                            size_hint_x: 0.35
+                            text: "Amortissement"
+                            bold: True
+                            font_size: "14dp"
+                            color: 0, 1, 0, 1
+                        Slider:
+                            range: 0, 100
+                            value: 50
+                            on_value: root.on_slider(1, "amortissement", *args)
+                    BoxLayout:
+                        Label:
+                            size_hint_x: 0.35
+                            text: "Roulis"
+                            bold: True
+                            font_size: "14dp"
+                            color: 0, 1, 0, 1
+                        Slider:
+                            range: 0, 100
+                            value: 50
+                            on_value: root.on_slider(1, "roulis", *args)
+        BoxLayout:
+            size_hint_y: 0.10
+            spacing: 5
+            padding: 5
+            BoxLayout:
+                size_hint_x: 0.75
+            Button:
+                size_hint_x: 0.20
+                text: "Retour"
+                bold: True
+                font_size: "24dp"
+                on_press: root.manager.current = ("Wheel")
+                background_color: 0, 0, 0.9, 0.6
+                color: 0, 1, 0, 1
+            BoxLayout:
+                size_hint_x: 0.05
+
+<InfoScreen>:
+    BoxLayout:
+        padding: 50
+        spacing: 50
+        canvas:
+            Color:
+                rgba: 0, 0, 1.0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                size_hint_y: 0.85
+                text: "{}".format(root.info)
+                bold: True
+                font_size: "22dp"
+                color: 0, 1, 0, 1
+            BoxLayout:
+                size_hint_y: 0.15
+                spacing: 5
+                padding: 5
+                BoxLayout:
+                    size_hint_x: 0.75
+                Button:
+                    size_hint_x: 0.20
+                    text: "Menu"
+                    bold: True
+                    font_size: "22dp"
+                    #on_press: root.manager.get_screen("Wheel").receive_thread_start()
+                    on_release: root.on_press()  # manager.current = ("Wheel")
+                    background_color: 0, 0, 0.9, 0.6
+                    color: 0, 1, 0, 1
+                BoxLayout:
+                    size_hint_x: 0.05
+
+<EtalonnageScreen>:
+    grid: grid_etal
+    BoxLayout:
+        padding: 10
+        spacing: 10
+        canvas:
+            Color:
+                rgba: 0, 0, 1.0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout: # Gauche
+            size_hint_x: 0.8
+            BoxLayout:
+                orientation: "vertical"
+                Label: # titre
+                    size_hint_y: 0.10
+                    text: "Etalonnage"
+                    bold: True
+                    font_size: "24dp"
+                    color: 0, 1, 0, 1
+                BoxLayout: # boite vide
+                    size_hint_y: 0.20
+                Label: # Text 1
+                    size_hint_y: 0.20
+                    text: "Appuyer fort sur l'accélérateur\nsans relacher la pression\njusqu'à ce que\ntoutes les LEDs soit allumées"
+                    bold: True
+                    font_size: "18dp"
+                    color: 0, 0, 0, 1
+                BoxLayout: # Boite des leds
+                    size_hint_y: 0.04
+                    BoxLayout: # boite vide
+                        size_hint_x: 0.10
+                    GridLayout: # Grille des leds
+                        size_hint_x: 0.8
+                        cols: 12
+                        rows: 1
+                        id: grid_etal
+                    BoxLayout: # boite vide
+                        size_hint_x: 0.10
+                BoxLayout:
+                    size_hint_y: 0.1
+                Label: # Text 2
+                    size_hint_y: 0.36
+                    text: "Buggy"
+                    bold: True
+                    font_size: "16dp"
+                    color: 0, 0, 0, 1
+
+        BoxLayout: # Droite
+            size_hint_x: 0.2
+            orientation: "vertical"
+
+            BoxLayout: # boite vide
+                size_hint_y: 0.10
+
+            Button: # gros pavé d'accélérateur
+                size_hint_y: 0.6
+                background_color: 0, 1, 0, 1
+                on_press: root.do_press()
+                on_release: root.do_etal_release()
+
+            Label: # Accélérateur
+                size_hint_y: 0.1
+                text: "Accélérateur"
+                color: 0, 0, 0, 1
+                bold: True
+                font_size: "16dp"
+
+            BoxLayout: # boite vide
+                size_hint_y: 0.10
+
+            Button: # Retour
+                size_hint_y: 0.10
+                text: "Retour"
+                bold: True
+                font_size: "24dp"
+                on_press: root.coeff_to_wheel()
+                on_release: root.manager.current = ("Wheel")
+                background_color: 0, 0, 0.9, 0.6
+                color: 0, 1, 0, 1
+
+            BoxLayout: # boite vide
+                size_hint_y: 0.10

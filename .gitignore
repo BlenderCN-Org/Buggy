@@ -1,0 +1,31 @@
+# Geany
+*.geany
+
+# Python test
+*_old.py
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# GitEye
+target/
+/.project
+*.project
+
+# Blender
+*.blend1
+*.blend2
+*.blend3
+*.blend4
+*.blend5
+
+# other
+*_old.ini
+.idea/
+wiki.html
+old/
+.buildozer/
+buildozer/
+
+# other other

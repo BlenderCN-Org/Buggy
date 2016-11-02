@@ -1,0 +1,4 @@
+title=Wheel
+author=Labomedia
+orientation=landscape
+android.permissions = INTERNET
