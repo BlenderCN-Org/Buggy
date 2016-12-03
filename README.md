@@ -1,6 +1,6 @@
-# Buggy2.74
+# Buggy
 
-Jeu de voiture réalisé avec Blender 2.72 ou 2.74 et python 3.4,
+Jeu de voiture réalisé avec Blender 2.72 et python 3.4,
 avec une application android pour conduire la voiture et gérer les joueurs et le jeu.
 
 L'application comprend:
@@ -10,9 +10,11 @@ L'application comprend:
 - preréglage
 - gestion du jeu
 
-![Buggy](http://wiki.labomedia.org/images/7/74/Game_05.jpg =600x)
+![Buggy](https://github.com/sergeLabo/Buggy/blob/master/doc/Car_03.png =400x)
 
-![Wheel on tablet](http://wiki.labomedia.org/images/c/c7/Wheel1.png =600x)
+![Wheel on tablet](https://github.com/sergeLabo/Buggy/blob/master/doc/Fichier_Wheel1.png =400x)
+
+Video URL youtube https://youtu.be/iswIEhf45Og
 
 ### Documentation
 

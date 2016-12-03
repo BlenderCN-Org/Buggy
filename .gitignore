@@ -14,11 +14,7 @@ target/
 *.project
 
 # Blender
-*.blend1
-*.blend2
-*.blend3
-*.blend4
-*.blend5
+*.blend*
 
 # other
 *_old.ini
