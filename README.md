@@ -14,13 +14,15 @@ L'application comprend:
 
 ![Wheel on tablet](https://github.com/sergeLabo/Buggy/blob/master/doc/Fichier_Wheel1.png =400x)
 
+![Volant](https://github.com/sergeLabo/Buggy/blob/master/doc/volant_1.png =400x)
+
 Video URL youtube https://youtu.be/iswIEhf45Og
 
 ### Documentation
 
-[Documentation](http://wiki.labomedia.org/index.php/Blender:Buggy_:_Le_jeu_Les_fonctionnalit%C3%A9s)
+[Documentation]()
 
-## License
+### Licence
 
 Copyright (C) Labomedia July 2011
 
@@ -37,38 +39,43 @@ or send a letter to
     California, 94041
     USA
 
-##Application Android  réalisé avec Kivy: Wheel
+### Application Android  réalisé avec Kivy: Wheel
 
 Les scripts sont en pyhton 2.7 car buildozer marche mal en python 3.
 
-## Jeu en local
+###  Jeu en local
 
 - Avec 1 à 4 joueurs
 - Sans Wheel
 
-##Jeu sur un réseau local
+### Jeu sur un réseau local
 
 - With 1 to 4 PC
 - un joueur par PC,
 - avec ou sans Wheel
 
-##Installation
-### Installation APK
+### Installation
+
+###" Installation APK
+
 Copier le fichier *.apk qui est dans le dossier android-wheel
 sur votre téléphone ou tablette, puis l'installer.
 
-### Blender
+#### Blender
+
 Installer Blender 2.72 ou 2. 74, ce qui installera toutes les dépendances nécessaires.
  sudo apt-get install blender
 
-## Lancement du serveur et des jeux:
+### Lancement du serveur et des jeux
+
 Aller dans le dossier game, double clic sur:
 - run_server.sh pour lancer un server
 - run_game.sh pour lancer un jeu
 
 Un seul serveur sur le LAN. Un seul jeu par PC.
 
-## Bugs
+### Bugs
+
 Beaucoup !!
 
 ####La copie de la voiture n'est pas "sur" la route, seul le toit dépasse:
