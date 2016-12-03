@@ -13,7 +13,8 @@
 # Demande_de_players_list =
 "Give me players list and dictateur"
 # Réponse
-{"Dictateur": {"dbv_name": "pc4", "dbv_exist": 1}, "Liste des joueurs": ["pc4", "pc5"]}
+{"Dictateur": {"dbv_name": "pc4", "dbv_exist": 1}, "Liste des joueurs": ["pc4",
+                                                                         "pc5"]}
 
 # Reçu de server GUI
 {"From server GUI": {"reset": 0, "level": 1, "start": 0}}
