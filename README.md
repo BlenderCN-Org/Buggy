@@ -3,7 +3,8 @@
 Jeu de voiture réalisé avec Blender 2.72 et python 3.4,
 avec une application android pour conduire la voiture et gérer les joueurs et le jeu.
 
-L'application comprend:
+
+### L'application android comprend:
 
 - volant
 - accélérateur
@@ -56,7 +57,7 @@ Les scripts sont en pyhton 2.7 car buildozer marche mal en python 3.
 
 ### Installation
 
-###" Installation APK
+### Installation APK
 
 Copier le fichier *.apk qui est dans le dossier android-wheel
 sur votre téléphone ou tablette, puis l'installer.
