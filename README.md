@@ -11,11 +11,15 @@ avec une application android pour conduire la voiture et gérer les joueurs et l
 - preréglage
 - gestion du jeu
 
-![Buggy](https://github.com/sergeLabo/Buggy/blob/master/doc/Car_03.png =400x)
+### Images
 
-![Wheel on tablet](https://github.com/sergeLabo/Buggy/blob/master/doc/Fichier_Wheel1.png =400x)
+![Looping](https://raw.github.com/sergeLabo/Buggy/master/doc/looping.png =300x)
 
-![Volant](https://github.com/sergeLabo/Buggy/blob/master/doc/volant_1.png =400x)
+![Game Server](https://raw.github.com/sergeLabo/Buggy/master/doc/Car_03.png =300x)
+
+![Volant](https://raw.github.com/sergeLabo/Buggy/master/doc/volant_1.png =300x)
+
+TODO refaire video correcte
 
 Video URL youtube https://youtu.be/iswIEhf45Og
 
@@ -42,22 +46,22 @@ or send a letter to
 
 ### Application Android  réalisé avec Kivy: Wheel
 
-Les scripts sont en pyhton 2.7 car buildozer marche mal en python 3.
+Les scripts sont en pyhton 2.7
 
-###  Jeu en local
+###  Jeu sur un seul PC
 
 - Avec 1 à 4 joueurs
 - Sans Wheel
 
 ### Jeu sur un réseau local
 
-- With 1 to 4 PC
-- un joueur par PC,
+- Avec 1 à 4 PC
+- un joueur par PC
 - avec ou sans Wheel
 
 ### Installation
 
-### Installation APK
+#### Installation APK
 
 Copier le fichier *.apk qui est dans le dossier android-wheel
 sur votre téléphone ou tablette, puis l'installer.
@@ -77,9 +81,7 @@ Un seul serveur sur le LAN. Un seul jeu par PC.
 
 ### Bugs
 
-Beaucoup !!
-
-####La copie de la voiture n'est pas "sur" la route, seul le toit dépasse:
+#### La copie de la voiture n'est pas "sur" la route, seul le toit dépasse:
 faire sauter la voiture avec "Espace", ce qui va remonter la copie.
 C'est un conflit entre le script python et le moteur physique.
 
