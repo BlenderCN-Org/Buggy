@@ -14,13 +14,14 @@ avec une application android pour conduire la voiture et gérer les joueurs et l
 ### Images
 
 
-![Voitures](https://github.com/sergeLabo/Buggy/blob/master/doc/Game_05.jpg =300x)
+![Voitures](https://github.com/sergeLabo/Buggy/raw/master/doc/Game_05.jpg =300x)
 
-![Looping](https://github.com/sergeLabo/Buggy/blob/master/doc/looping.png =300x)
 
-![Game Server](https://github.com/sergeLabo/Buggy/blob/master/doc/Car_03.png =300x)
+![Looping](https://github.com/sergeLabo/Buggy/raw/master/doc/looping.png =300x)
 
-![Volant](https://github.com/sergeLabo/Buggy/blob/master/doc/volant_1.png =300x)
+![Game Server](https://github.com/sergeLabo/Buggy/raw/master/doc/Car_03.png =300x)
+
+![Volant](https://github.com/sergeLabo/Buggy/raw/master/doc/volant_1.png =300x)
 
 ### Video
 
@@ -28,7 +29,7 @@ avec une application android pour conduire la voiture et gérer les joueurs et l
 
 https://youtu.be/iswIEhf45Og
 
-[![Buggy](https://raw.github.com/sergeLabo/Buggy/master/doc/looping.png =300x)](https://youtu.be/iswIEhf45Og)
+[![Buggy](https://github.com/sergeLabo/Buggy/raw/master/doc/looping.png =300x)](https://youtu.be/iswIEhf45Og)
 
 ### Documentation
 
