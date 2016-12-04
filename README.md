@@ -14,7 +14,7 @@ avec une application android pour conduire la voiture et gérer les joueurs et l
 ### Images
 
 
-![Voitures](https://github.com/sergeLabo/Buggy/blob/master/doc/Game_05.jpg | width=100)
+![Voitures](https://github.com/sergeLabo/Buggy/blob/master/doc/Game_05.jpg){:width="360px"}
 
 ![Looping](https://github.com/sergeLabo/Buggy/blob/master/doc/looping.png)
 
