@@ -46,13 +46,6 @@ MULTICAST_ADDR = "224.0.0.11", 18888
 PORT = 8888
 HOST = get_my_ip()
 
-arduino = "/dev/ttyUSB0"
-
-sensor = "MPU6050"
-# or
-#sensor = "LSM303"
-
-
 class MyServerUdpProtocol:
     def __init__(self):
         # Instance Game

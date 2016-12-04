@@ -43,8 +43,8 @@ path_list = [   "scripts",
 for i in path_list:
     sys.path.append(p + i)
 
-print("Current directory =", p)
-print("Python sys.path =", sys.path)
+##print("Current directory =", p)
+##print("Python sys.path =", sys.path)
 
 try:
     from scripts.tempo import Tempo

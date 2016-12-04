@@ -28,9 +28,6 @@ from collections import OrderedDict
 from time import time, sleep
 import json
 import ast
-from lsm303 import LSM303
-from mpu6050_DMP6 import MPU6050
-
 
 from subprocess import Popen, PIPE
 
@@ -52,16 +49,6 @@ class Game:
         self.players = OrderedDict()
         # les datas reçues de tous les téléphones
         self.phone = {}
-
-        # Rotation du casque
-        device = arduino
-        lissage = 5
-
-        if sensor == "LSM303":
-            self.head_rot = LSM303(device, lissage)
-        if sensor == "MPU6050":
-            self.head_rot = MPU6050(device, lissage)
-        self.head_rot.read_thread()
 
         # Liste des connectés avec leur adresse ip
         self.connected_blender = []
@@ -152,14 +139,14 @@ class Game:
     def print_some(self):
         # Print pour le suivi
         if time() - self.top > 1:
-            ##print("Nom des joueurs blender", self.connected_blender)
-            ##print("Nom des téléphones connectés"  , self.connected_phone)
-            ##if self.dbv_name == "":
-                ##name = "Empty string"
-            ##else:
-                ##name = self.dbv_name
-            ##print("Dictateur:", name)
-            ##print("Rotation", "rien")
+            print("Nom des joueurs blender", self.connected_blender)
+            print("Nom des téléphones connectés"  , self.connected_phone)
+            if self.dbv_name == "":
+                name = "Empty string"
+            else:
+                name = self.dbv_name
+            print("Dictateur:", name)
+            print("Rotation", "rien")
             self.top = time()
 
     def resp_players_list_and_dictateur(self):
@@ -176,6 +163,7 @@ class Game:
         msg = { "Liste des joueurs": players_list,
                 "Dictateur": { "dbv_exist": self.dbv_exist,
                                "dbv_name": self.dbv_name}}
+
         # {"Liste des joueurs": ["serge"],
         #  "Dictateur": {"dbv_exist": 0, "dbv_name": ""}}
         self.svr_resp = json.dumps(msg).encode("utf-8")
@@ -314,8 +302,7 @@ class Game:
 
         alldata = { "players": self.players,
                     "buggygame": buggygame,
-                    "phone": self.phone,
-                    "rotation": self.head_rot.cam_ori }
+                    "phone": self.phone}
 
         self.svr_resp = json.dumps(alldata).encode("utf-8")
 

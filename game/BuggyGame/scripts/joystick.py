@@ -22,6 +22,7 @@
 #
 #############################################################################
 
+
 '''
 Détecte si des joysticks sont connectés
 Retourne en attribut:
@@ -36,6 +37,8 @@ self.buttons = liste de 0 à 10 indice, de valeurs 0 à 10 ex [0] ou [2,10]
 self.upDown = 0.0    : de -1.0 à 1.0
 self.letfRight = 0.0 : de -1.0 à 1.0
 '''
+
+
 from bge import logic as gl
 
 
