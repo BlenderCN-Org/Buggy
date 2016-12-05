@@ -24,7 +24,7 @@ avec une application android pour conduire la voiture et gérer les joueurs et l
 
 https://youtu.be/iswIEhf45Og
 
-<img src="https://github.com/sergeLabo/Buggy/blob/master/doc/looping.png" width="200">(https://youtu.be/iswIEhf45Og)
+[<img src="https://github.com/sergeLabo/Buggy/blob/master/doc/looping.png" width="200">](https://youtu.be/iswIEhf45Og)
 
 ### Documentation
 
