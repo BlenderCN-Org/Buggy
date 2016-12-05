@@ -21,14 +21,15 @@ avec une application android pour conduire la voiture et gérer les joueurs et l
 ### Video
 
 #### TODO refaire video correcte
-
-https://youtu.be/iswIEhf45Og
+Video très médiocre:
 
 [<img src="https://github.com/sergeLabo/Buggy/blob/master/doc/looping.png" width="200">](https://youtu.be/iswIEhf45Og)
 
 ### Documentation
 
-[Documentation](https://github.com/sergeLabo/Buggy/wiki)
+[Documentation sur le wiki de ce projet](https://github.com/sergeLabo/Buggy/wiki)
+
+[Vieille Documentation sur le wiki de Labomedia](https://wiki.labomedia.org/index.php/Cat%C3%A9gorie:Blender_Game_Apprendre_avec_un_jeu_de_voitures)
 
 ### Licence
 
@@ -47,21 +48,6 @@ or send a letter to
     California, 94041
     USA
 
-### Application Android réalisé avec Kivy: Wheel
-
-Les scripts sont en pyhton 2.7
-
-###  Jeu sur un seul PC
-
-- Avec 1 à 4 joueurs
-- Sans Wheel
-
-### Jeu sur un réseau local
-
-- Avec 1 à 4 PC
-- un joueur par PC
-- avec ou sans Wheel
-
 ### Installation
 
 #### Installation APK
@@ -72,11 +58,14 @@ sur votre téléphone ou tablette, puis l'installer.
 #### Blender
 
 Installer Blender 2.72 ou 2. 74, ce qui installera toutes les dépendances nécessaires.
+~~~text
  sudo apt-get install blender
+~~~
 
 ### Lancement du serveur et des jeux
 
-Aller dans le dossier game, double clic sur:
+Rendre les lanceurs excécutable, puis double clic sur
+
 - run_server.sh pour lancer un server
 - run_game.sh pour lancer un jeu
 
@@ -84,8 +73,14 @@ Un seul serveur sur le LAN. Un seul jeu par PC.
 
 ### Bugs
 
-#### La copie de la voiture n'est pas "sur" la route, seul le toit dépasse:
+##### La copie de la voiture n'est pas "sur" la route, seul le toit dépasse:
 faire sauter la voiture avec "Espace", ce qui va remonter la copie.
 C'est un conflit entre le script python et le moteur physique.
 
-#### Le son moteur n'existe que sur la voiture rouge
+##### Le son moteur n'existe que sur la voiture rouge
+
+##### Il n'y a pas de chrono !
+
+### Merci à
+
+* [Labomedia](https://labomedia.org/)
