@@ -13,6 +13,7 @@ avec une application android pour conduire la voiture et gérer les joueurs et l
 
 ### Images
 
+<img src="https://github.com/sergeLabo/Buggy/blob/master/doc/Game_05.jpg" width="400">
 
 ![Voitures](https://github.com/sergeLabo/Buggy/blob/master/doc/Game_05.jpg)
 
