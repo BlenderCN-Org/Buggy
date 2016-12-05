@@ -14,14 +14,9 @@ avec une application android pour conduire la voiture et gérer les joueurs et l
 ### Images
 
 <img src="https://github.com/sergeLabo/Buggy/blob/master/doc/Game_05.jpg" width="400">
-
-![Voitures](https://github.com/sergeLabo/Buggy/blob/master/doc/Game_05.jpg)
-
-![Looping](https://github.com/sergeLabo/Buggy/blob/master/doc/looping.png)
-
-![Game Server](https://github.com/sergeLabo/Buggy/blob/master/doc/Car_03.png)
-
-![Volant](https://github.com/sergeLabo/Buggy/blob/master/doc/volant_1.png)
+<img src="https://github.com/sergeLabo/Buggy/blob/master/doc/looping.png" width="400">
+<img src="https://github.com/sergeLabo/Buggy/blob/master/doc/Car_03.png" width="400">
+<img src="https://github.com/sergeLabo/Buggy/blob/master/doc/volant_1.png" width="400">
 
 ### Video
 
