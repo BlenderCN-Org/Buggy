@@ -31,7 +31,7 @@ def enable_full_viewport(cam):
     H = render.getWindowHeight()
     cam.setViewport( 0, 0, W, H)
     cam.useViewport = True
-    print("Camera {0} is full viewport".format(cam.name))
+    #print("Camera {0} is full viewport".format(cam.name))
 
 def enable_half_viewport(cam1, cam2):
     # cam1 and 2 are blender objects
@@ -73,4 +73,4 @@ def enable_quad_viewport(cam1, cam2, cam3, cam4):
 
 def disable_viewport(cam):
     cam.useViewport = False
-    print("Camera ", cam.name, "is disable")
+    #print("Camera ", cam.name, "is disable")

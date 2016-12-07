@@ -100,9 +100,10 @@ def hit_parade(objDict):
 
 def input_name(objDict):
     ''' Labomedia scene is set with logic brick during 150,
-    this is the first state = InputName. If cursor exist --> Scene = Name'''
+    this is the first state = InputName. If cursor exist --> Scene = Name
+    '''
+
     if "cursor" in objDict:
-        print("End in Name")
         # Entrée après saisie du nom
         if objDict["cursor"]["end"] == True:
             print("End in Name ok")
@@ -111,6 +112,7 @@ def input_name(objDict):
 
 def menus(objDict):
     ''' Set players number, manettes'''
+
     # Config joystick in Menus
     joysticks_invert(objDict)
     joysticks_test_Menu(objDict)

@@ -49,7 +49,7 @@ HOST = get_my_ip()
 class MyServerUdpProtocol:
     def __init__(self):
         # Instance Game
-        self.mygame = Game(arduino, sensor)
+        self.mygame = Game()
 
         # Envoi de l'IP toutes les secondes
         thread1 = threading.Thread(target=self.send_ip_loop)

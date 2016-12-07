@@ -71,6 +71,11 @@ Rendre les lanceurs excécutable, puis double clic sur
 
 Un seul serveur sur le LAN. Un seul jeu par PC.
 
+#### Clavier, manette de jeux, tablette
+
+Le choix se fera automatiquement:
+
+
 ### Bugs
 
 ##### La copie de la voiture n'est pas "sur" la route, seul le toit dépasse:

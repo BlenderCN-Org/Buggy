@@ -59,8 +59,7 @@ def printSome():
         since = int(gl.tempoDict["always"].tempo / 60)
         print("\nBuggy Game is running since {0} seconds\n".format(since))
         print("Some variable to debug")
-        print_str_args( "gl.carDict",
-                        "gl.cars",
+        print_str_args( "gl.cars",
                         "gl.phone",
                         "gl.wheel",
                         "gl.my_name",
@@ -75,8 +74,3 @@ def printSome():
                         "gl.start",
                         "gl.tuning",
                         "gl.rot")
-
-'''
-[![Everything Is AWESOME](http://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg)]
-(https://www.youtube.com/watch?v=StTqXEQ2l-Y "Everything Is AWESOME")
-'''

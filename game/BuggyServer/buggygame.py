@@ -40,7 +40,7 @@ class Game:
 
     """
 
-    def __init__(self, arduino, sensor):
+    def __init__(self):
         # Ce qui est répondu par le serveur, type bytes, donc json encodé
         self.svr_resp = None
         # Le serveur répond (True) ou pas(False)
