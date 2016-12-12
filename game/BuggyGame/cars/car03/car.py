@@ -4,7 +4,7 @@
 ## car.py
 
 #############################################################################
-# Copyright (C) Labomedia March 2011
+# Copyright (C) Labomedia March 2011:2015
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU General Public License
@@ -21,6 +21,7 @@
 #  Inc., 51 Franproplin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 #############################################################################
+
 
 from bge import logic as gl
 from bge import constraints
@@ -120,14 +121,22 @@ class Car():
             self.vehicle.applyEngineForce(p, i)
 
         # Turn
+        # Régler ces 2 valeurs, pas ailleurs
+        # TODO mettre ça dans le ini
         A = 0.7
-        B = 0.01
-        a, b = droiteAffine(50, A, 200, B)
-        if self.vitesse <= 50:
+        B = 0.002
+        V1 = 50
+        V2 = 240
+
+        a, b = droiteAffine(V1, A, V2, B)
+
+        if self.vitesse <= V1:
             c = A
-        if 50 < self.vitesse < 200:
+
+        if V1 < self.vitesse < V2:
             c = a * self.vitesse + b
-        if self.vitesse >= 200:
+
+        if self.vitesse >= V2:
             c = B
 
         d = - direction * c * leftRight

@@ -259,27 +259,18 @@ def set_viewport(objDict, nb):
     # 1 player  > full view
     if nb == 1:
         cam1 = objDict["camCar00"]
-        cam2 = objDict["camCar10"]
-        stereo = objDict["camCar10"]["stereo"]
 
-        if gl.server and not stereo:
+        if gl.server:
             objDict["camCar00"].useViewport = False
             cam1 = objDict["camCar0" + str(gl.myPosition)]
         enable_full_viewport(cam1)
-
-        # Stereo
-        if stereo and gl.server:
-            cam1 = objDict["camCar0" + str(gl.myPosition)]
-            disable_viewport(cam1)
-            enable_stereo_viewport(cam1, cam2)
-        if not stereo:
-            disable_viewport(cam2)
 
     # 2 players > vertical split
     if nb == 2:
         cam1 = objDict["camCar00"]
         cam2 = objDict["camCar01"]
         enable_half_viewport(cam1, cam2)
+
     # 3 or 4 players > quad split
     if nb > 2:
         cam1 = objDict["camCar00"]

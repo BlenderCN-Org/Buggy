@@ -59,8 +59,8 @@ def printSome():
         since = int(gl.tempoDict["always"].tempo / 60)
         print("\nBuggy Game is running since {0} seconds\n".format(since))
         print("Some variable to debug")
-        print_str_args( "gl.cars",
-                        "gl.phone",
+
+        print_str_args( "gl.phone",
                         "gl.wheel",
                         "gl.my_name",
                         "gl.state",

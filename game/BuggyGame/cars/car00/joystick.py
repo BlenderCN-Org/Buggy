@@ -4,7 +4,7 @@
 ## joystick.py
 
 #############################################################################
-# Copyright (C) Labomedia March 2011:2015
+# Copyright (C) Labomedia March 2011
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU General Public License
@@ -37,6 +37,8 @@ self.buttons = liste de 0 à 10 indice, de valeurs 0 à 10 ex [0] ou [2,10]
 self.upDown = 0.0    : de -1.0 à 1.0
 self.letfRight = 0.0 : de -1.0 à 1.0
 '''
+
+
 from bge import logic as gl
 
 
@@ -74,8 +76,17 @@ class JoystickFactory():
 
     def update(self):
         self.buttons = gl.joysticks[self.index].activeButtons
+
         self.coeff_with_buttons_update()
+
         if self.axis_number == 4:
+            self.update_4()
+        elif self.axis_number == 6:
+            self.update_xbox()
+        else:
+            print("Joystick class only with 4 or 6 axes")
+
+    def update_4(self):
             # Invert axes
             if not self.invert_UD__to_LR:
                 self.letfRight = gl.joysticks[self.index].axisValues[0]
@@ -99,8 +110,31 @@ class JoystickFactory():
             else:
                 self.joyOut = [self.letfRight, self.upDown, self.buttons]
 
-        else:
-            print("Joystick class only with 4 axes")
+    def update_xbox(self):
+            # Invert axes
+            if not self.invert_UD__to_LR:
+                self.letfRight = gl.joysticks[self.index].axisValues[0]
+            else:
+                self.letfRight = - gl.joysticks[self.index].axisValues[1]
+
+            if not self.invert_LR__to_UD:
+                self.upDown = gl.joysticks[self.index].axisValues[3]
+            else:
+                self.upDown = - gl.joysticks[self.index].axisValues[5]
+
+
+            # Invert sens
+            if self.invert_LeftRight:
+                self.upDown = - self.upDown
+            if self.invert_UpDown:
+                self.letfRight = - self.letfRight
+
+            # Invert sticks
+            if not self.invert_sticks:
+                self.joyOut = [self.upDown, self.letfRight, self.buttons]
+            else:
+                self.joyOut = [self.letfRight, self.upDown, self.buttons]
+
 
     def coeff_with_buttons_update(self):
         bt = self.buttons
@@ -141,7 +175,9 @@ class Joystick(list):
     def attribution(self):
         ''' Use joyOPY.J1.joyOut to get a list of output if not None
         and Use joyOPY.J2.joyOut if not None
-            Only with maxi 2 joysticks'''
+            Only with maxi 2 joysticks
+        '''
+
         if self.joy_number > 0:
             self.J1 = self[0]
             print("Joystick J1 {0} created".format(self.J1))

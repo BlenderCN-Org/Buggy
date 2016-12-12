@@ -156,6 +156,9 @@ def run_in_game(car):
     ## Masquage de accel pour tout, sauf wheel qui le modifie dans wheel mode
     objDict = get_all_obj_in_dict()
     objDict["accel0" + str(car)].localScale = [0, 1, 1]
+    ##if car == 0:
+        ###if gl.rot != [0, 0, 0]:
+        ##camera_rotation(objDict["camCar00"])
 
     ## Application de la table
     if mode == "J1":
@@ -170,15 +173,19 @@ def run_in_game(car):
         gl.carDict[car].mouvement_keyboard()
     if mode == "Z":
         gl.carDict[car].mouvement_keyboard_ZQSD()
-    if mode == -1:
-        if car == 0:
-            gl.carDict[car].set_position(-2, -3, -3)
-        if car == 1:
-            gl.carDict[car].set_position(2, -9, -3)
-        if car == 2:
-            gl.carDict[car].set_position(-2, -9, -3)
-        if car == 3:
-            gl.carDict[car].set_position(3, -15, -3)
+
+    try:
+        if mode == -1:
+            if car == 0:
+                gl.carDict[car].set_position(-2, -3, -3)
+            if car == 1:
+                gl.carDict[car].set_position(2, -9, -3)
+            if car == 2:
+                gl.carDict[car].set_position(-2, -9, -3)
+            if car == 3:
+                gl.carDict[car].set_position(3, -15, -3)
+    except:
+        pass
 
     ## Dynamic Settings when running
     if mode == "W":
@@ -237,36 +244,41 @@ def wheel_mode(car, p):
         vitesse basse = angle fort
         vitesse haute = angle faible
         a, b = droiteAffine(x1, y1, x2, y2)
-        à 100, angle ok
-        diminution au dessus: 1 demi doite à droite
-        augmentation en dessous: 1 demi droite à gauche
-        continuité avec les 2 demi droite en (100, 1).
+        à 40, angle ok
+        diminution au dessus: 1 demi-droite à droite
+        augmentation en dessous: 1 demi-droite à gauche
 
         p = puissance
         Applique la force et l'angle sur la voiture à la fin.
     """
 
     try:
-        alpha0 = 1.3
-        alpha1 = 0.7
-        v1 = 100
-        v2 = 200
-        echelle = 800.0
+        # get vitesse
         vitesse = gl.carDict[car].vitesse
 
+        # direction
+        alpha0 = 1.3
+        alpha1 = 1
+        alpha2 = 0.07
+        v0 = 0
+        v1 = 40
+        v2 = 220
+
         # à gauche
-        if vitesse <= 100:
-            a, b = droiteAffine(0, alpha0, v1, 1)
+        if vitesse <= v1:
+            a, b = droiteAffine(v0, alpha0, v1, alpha1)
+
         # à droite
-        if vitesse > 100:
-            a, b = droiteAffine(100, 1, v2, alpha1)
+        if vitesse > v1:
+            a, b = droiteAffine(v1, alpha1, v2, alpha1)
+
         # correction en fonction de la vitesse de l'angle à faire
         cor = a * vitesse + b
 
         accy = gl.phone[0]
-        # accy donne l'angle du volant, nouveau nom beta pour clarté !
-        alpha = accy / echelle
-        beta = alpha * cor
+        # accy donne l'angle du volant
+        echelle = 800.0
+        beta = accy * cor / echelle
 
         # force
         accel = - gl.phone[1] / 100.0
@@ -395,18 +407,3 @@ def get_all_obj_in_dict():
         for obj in scn.objects:
             objDict[obj.name] = obj
     return objDict
-
-# correspond au lancement d'un autre jeu
-# les voitures ne sont pas encore là !!
-##if car == 0:
-    ##l, r = (1.5, -3, 5), (1, 0, 0, 0, 1, 0, 0, 0, 1)
-    ##gl.carDict[0].set_Loc_Rot(l, r)
-##if car == 1:
-    ##l, r = (-1.5, -9, 5), (1, 0, 0, 0, 1, 0, 0, 0, 1)
-    ##gl.carDict[1].set_Loc_Rot(l, r)
-##if car == 2:
-    ##l, r = (1.5, -15, 5), (1, 0, 0, 0, 1, 0, 0, 0, 1)
-    ##gl.carDict[2].set_Loc_Rot(l, r)
-##if car == 3:
-    ##l, r = (1.5, -21, 5), (1, 0, 0, 0, 1, 0, 0, 0, 1)
-    ##gl.carDict[3].set_Loc_Rot(l, r)

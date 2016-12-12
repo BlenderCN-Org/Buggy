@@ -1,6 +1,27 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
+## client.py
+
+#############################################################################
+# Copyright (C) Labomedia 2011:2015
+#
+#    This file is part of Buggy.
+#
+#    Buggy is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    Buggy is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Foobar.  If not, see <http://www.gnu.org/licenses/>
+#
+#############################################################################
 
 
 import socket
@@ -16,6 +37,7 @@ class Client:
         buffer_size = entier, permet de vider le buffer à chaque lecture,
         pour avoir toujours la
         '''
+
         self.ip = ip
         self.port = port
         self.buffer_size = buffer_size
@@ -39,15 +61,18 @@ class Client:
 
     def send(self, req):
         """Send request to connected socket."""
+
         addr = self.ip, self.port
         self.sock.send(req)
 
     def send_to(self, req, address):
         """Send request to address = (ip, port)."""
+
         self.sock.sendto(req, address)
 
     def listen(self):
         '''Return received data and address from.'''
+
         raw_data, addr = None, None
         try:
             raw_data, addr = self.sock.recvfrom(self.buffer_size)
